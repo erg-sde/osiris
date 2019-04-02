@@ -1,0 +1,8 @@
+<h1>Varieties</h1>
+<% @varieties.each do |variety| %>
+<ul>
+    <li>
+        <%= link_to(variety.name, variety) %>, price: <%= number_to_currency(variety.price / 100)%>
+    </li>
+</ul>
+<% end %>

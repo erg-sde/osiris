@@ -1,0 +1,33 @@
+<h1>Location <%= @location.name %></h1>
+
+<ul>
+    <li>
+        Capacity: <%= @location.capacity %>
+    </li>
+    <li>
+        Allocated Capacity: <%= @location.allocated_capacity %>
+    </li>
+    <li>
+        Available: <%= @location.remaining_capacity %>
+    </li>
+</ul>
+
+<h2> Batches </h2>
+<% @location.batches.each do |batch| %>
+    <h4> Batch <%= link_to(batch.id, batch) %> </h4>
+    <ul>
+        <li>
+            Quantity: <%= batch.quantity %>
+        </li>
+        <li>
+            Plants: <%= batch.plant_quantity %>
+        </li>
+        <li>
+            Value: <%= number_to_currency(batch.value) %>
+        </li>
+        <li>
+            Variety: <%= link_to(batch.variety.name, batch.variety) %>
+        </li>
+    </ul>
+<% end %>
+

@@ -1,0 +1,21 @@
+<h1>Batch <%= @batch.id%></h1>
+<ul>
+    <li>
+        Variety: <%= link_to(@batch.variety.name, @batch.variety) %>
+    </li>
+    <li>
+        Quantity: <%= @batch.quantity %>
+    </li>
+    <li>
+        Plants: <%= @batch.plant_quantity %>
+    </li>
+    <li>
+        Value: <%= number_to_currency(@batch.value) %>
+    </li>
+    <li>
+        Location: <%= link_to(@batch.location.name, @batch.location) %>
+    </li>
+    <li>
+        Planted By: <%= @batch.user.email %>
+    </li>
+</ul>

@@ -10,4 +10,8 @@ class Batch < ApplicationRecord
   def plant_quantity
     quantity * container.capacity
   end
+
+  def value
+    quantity * variety.price / 100
+  end
 end
