@@ -9,4 +9,8 @@ class Variety < ApplicationRecord
   def total_plants
     total_containers * container.capacity
   end
+
+  def batch_count
+    batches.length
+  end
 end

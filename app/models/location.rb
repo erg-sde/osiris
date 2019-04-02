@@ -8,4 +8,8 @@ class Location < ApplicationRecord
   def remaining_capacity
     capacity - allocated_capacity
   end
+
+  def batch_count
+    batches.length
+  end
 end

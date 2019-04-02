@@ -26,7 +26,7 @@
   <tbody>
     <% @variety.batches.each do |batch| %>
         <tr>
-        <td><%= link_to(batch.id, batch) %></td>
+        <td><%= link_to("B"+batch.id.to_s, batch) %></td>
         <td><%= number_to_currency(batch.value)%></td>
         <td><%= batch.container.name %></td>
         <td><%= batch.quantity %></td>

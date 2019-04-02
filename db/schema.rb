@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_174604) do
+ActiveRecord::Schema.define(version: 2019_04_02_233515) do
 
   create_table "batches", force: :cascade do |t|
     t.integer "variety_id"
@@ -36,11 +36,47 @@ ActiveRecord::Schema.define(version: 2019_04_02_174604) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.string "region"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "line_item_batches", force: :cascade do |t|
+    t.integer "line_item_id"
+    t.integer "batch_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantity"
+    t.index ["batch_id"], name: "index_line_item_batches_on_batch_id"
+    t.index ["line_item_id"], name: "index_line_item_batches_on_line_item_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "variety_id"
+    t.integer "quantity"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+    t.index ["variety_id"], name: "index_line_items_on_variety_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.integer "capacity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "po_number"
+    t.string "region"
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "users", force: :cascade do |t|

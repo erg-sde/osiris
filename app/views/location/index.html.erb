@@ -1,8 +1,24 @@
 <h1>Locations</h1>
-<% @locations.each do |location| %>
-<ul>
-    <li>
-        <%= link_to(location.name, location) %>,  Availability: <%= location.remaining_capacity%>/<%=location.capacity%>
-    </li>
-</ul>
-<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Available</th>
+      <th scope="col">Capacity</th>
+      <th scope="col">Allocated</th>
+      <th scope="col">Batch Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @locations.each do |location| %>
+        <tr>
+        <td><%= link_to(location.name, location) %></td>
+        <td><%= location.remaining_capacity%></td>
+        <td><%=location.capacity%></td>
+        <td><%= location.allocated_capacity%></td>
+        <td><%= location.batch_count %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
