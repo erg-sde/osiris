@@ -10,7 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_005500) do
+ActiveRecord::Schema.define(version: 2019_04_02_174604) do
+
+  create_table "batches", force: :cascade do |t|
+    t.integer "variety_id"
+    t.integer "quantity"
+    t.integer "container_id"
+    t.string "stage"
+    t.integer "location_id"
+    t.string "treatment"
+    t.string "soil"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["container_id"], name: "index_batches_on_container_id"
+    t.index ["location_id"], name: "index_batches_on_location_id"
+    t.index ["user_id"], name: "index_batches_on_user_id"
+    t.index ["variety_id"], name: "index_batches_on_variety_id"
+  end
+
+  create_table "containers", force: :cascade do |t|
+    t.string "name"
+    t.integer "capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.integer "capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,16 +55,13 @@ ActiveRecord::Schema.define(version: 2019_04_01_005500) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "views", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
+  create_table "varieties", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.integer "container_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_views_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_views_on_reset_password_token", unique: true
+    t.index ["container_id"], name: "index_varieties_on_container_id"
   end
 
 end

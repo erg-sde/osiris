@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  variety: one
+  quantity: 1
+  container: one
+  stage: MyString
+  location: one
+  treatment: MyString
+  soil: MyString
+
+two:
+  variety: two
+  quantity: 1
+  container: two
+  stage: MyString
+  location: two
+  treatment: MyString
+  soil: MyString
