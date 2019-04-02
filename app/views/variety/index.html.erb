@@ -1,8 +1,22 @@
 <h1>Varieties</h1>
-<% @varieties.each do |variety| %>
-<ul>
-    <li>
-        <%= link_to(variety.name, variety) %>, price: <%= number_to_currency(variety.price / 100)%>
-    </li>
-</ul>
-<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Container Type</th>
+      <th scope="col">Available</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @varieties.each do |variety| %>
+        <tr>
+        <td><%= link_to(variety.name, variety) %></td>
+        <td><%= number_to_currency(variety.price / 100)%></td>
+        <td><%= variety.container.name %></td>
+        <td><%= variety.total_plants %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

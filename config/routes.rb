@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   unauthenticated do
-    root to: 'sessions#create'
+    devise_scope :user do
+      root to: "devise/sessions#new"
+    end
   end
 
   authenticated do
-    root to: 'sessions#create'
-    resources :varieties
+    root to: 'variety#index'
   end
 end

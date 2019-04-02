@@ -1,7 +1,7 @@
 <h1><%= @variety.name %></h1>
 <ul>
     <li>
-        Price: <%= number_to_currency(@variety.price) %>
+        Price: <%= number_to_currency(@variety.price / 100) %>
     </li>
     <li>
         Container: <%= @variety.container.name %>
@@ -9,21 +9,32 @@
 </ul>
 
 <h2> Batches </h2>
-<% @variety.batches.each do |batch| %>
-    <h4> Batch <%= link_to(batch.id, batch) %> </h4>
-    <ul>
-        <li>
-            Quantity: <%= batch.quantity %>
-        </li>
-        <li>
-            Plants: <%= batch.plant_quantity %>
-        </li>
-        <li>
-            Value: <%= number_to_currency(batch.value) %>
-        </li>
-        <li>
-            Location: <%= link_to(batch.location.name, batch.location) %>
-        </li>
-    </ul>
-<% end %>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Value</th>
+      <th scope="col">Container Type</th>
+      <th scope="col">Count</th>
+      <th scope="col">Planter</th>
+      <th scope="col">Location</th>
+      <th scope="col">Soil</th>
+      <th scope="col">Treatment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @variety.batches.each do |batch| %>
+        <tr>
+        <td><%= link_to(batch.id, batch) %></td>
+        <td><%= number_to_currency(batch.value)%></td>
+        <td><%= batch.container.name %></td>
+        <td><%= batch.quantity %></td>
+        <td><%= batch.user.email %></td>
+        <td><%= link_to(batch.location.name, batch.location) %></td>
+        <td><%= batch.soil %></td>
+        <td><%= batch.treatment %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

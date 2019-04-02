@@ -1,2 +1,8 @@
-<h1>Location#index</h1>
-<p>Find me in app/views/location/index.html.erb</p>
+<h1>Locations</h1>
+<% @locations.each do |location| %>
+<ul>
+    <li>
+        <%= link_to(location.name, location) %>,  Availability: <%= location.remaining_capacity%>/<%=location.capacity%>
+    </li>
+</ul>
+<% end %>
