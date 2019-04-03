@@ -1,0 +1,22 @@
+<h1>Orders</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">PO Number</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Value</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+        <tr>
+        <td><%= link_to(order.po_number, order) %></td>
+        <td><%= link_to(order.customer.name, order.customer)%></td>
+        <td><%=order.value%></td>
+
+        </tr>
+    <% end %>
+  </tbody>
+</table>

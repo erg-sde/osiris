@@ -3,6 +3,7 @@ class Batch < ApplicationRecord
   belongs_to :container
   belongs_to :location
   belongs_to :user
+  has_many :line_item_batches
   def week_planted
     created_at.strftime('%U').to_i
   end

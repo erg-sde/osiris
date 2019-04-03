@@ -1,0 +1,12 @@
+<h1>Order</h1>
+<ul>
+    <li> 
+      PO Number: <%= @order.po_number%>
+    </li>
+    <li>
+      Value: <%= @order.value%>
+    </li>
+    <li>
+      Customer: <%= link_to(@order.customer.name, @order.customer)%>
+    </li>
+</ul>

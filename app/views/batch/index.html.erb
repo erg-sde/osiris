@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
+      <th scope="col">Variety</th>
       <th scope="col">Stage</th>
       <th scope="col">Value</th>
       <th scope="col">Container Type</th>
@@ -18,6 +19,7 @@
     <% @batches.each do |batch| %>
         <tr>
         <td><%= link_to("B"+batch.id.to_s, batch) %></td>
+        <td><%= link_to(batch.variety.name, batch.variety) %></td>
         <td><%= batch.stage %></td>
         <td><%= number_to_currency(batch.value)%></td>
         <td><%= batch.container.name %></td>

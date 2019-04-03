@@ -18,4 +18,27 @@
     <li>
         Planted By: <%= @batch.user.email %>
     </li>
+    <li>
+       Stage: <%= @batch.stage %>
+    </li>
 </ul>
+
+<h3>Orders </h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">PO Number</th>
+      <th scope="col">Variety</th>
+      <th scope="col">Quantity Allocated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @batch.line_item_batches.each do |lib| %>
+        <tr>
+        <td><%= link_to(lib.line_item.order.po_number, lib.line_item.order) %></td>
+        <td><%= link_to(lib.line_item.variety.name, lib.line_item.variety)%></td>
+        <td><%= lib.quantity %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
