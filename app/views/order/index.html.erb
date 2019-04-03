@@ -12,10 +12,9 @@
   <tbody>
     <% @orders.each do |order| %>
         <tr>
-        <td><%= link_to(order.po_number, order) %></td>
-        <td><%= link_to(order.customer.name, order.customer)%></td>
-        <td><%=order.value%></td>
-
+            <td><%= link_to(order.po_number, order) %></td>
+            <td><%= link_to(order.customer.name, order.customer)%></td>
+            <td><%=number_to_currency(order.value / 100)%></td>
         </tr>
     <% end %>
   </tbody>

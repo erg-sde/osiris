@@ -4,9 +4,29 @@
       PO Number: <%= @order.po_number%>
     </li>
     <li>
-      Value: <%= @order.value%>
+      Value: <%= number_to_currency(@order.value / 100)%>
     </li>
     <li>
       Customer: <%= link_to(@order.customer.name, @order.customer)%>
     </li>
 </ul>
+
+<h3>Line Items </h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Variety</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.line_items.each do |line| %>
+        <tr>
+        <td><%= link_to(line.variety.name, line.variety) %></td>
+        <td><%= line.quantity%></td>
+        <td><%= number_to_currency(line.value / 100) %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
