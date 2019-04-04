@@ -8,8 +8,6 @@ class BatchController < ApplicationController
   end
 
   def create
-  end
-
-  def new
+    @batch = Batch.new
   end
 end

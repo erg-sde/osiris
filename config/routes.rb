@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :line_item
   resources :order
   resources :customer
   resources :batch

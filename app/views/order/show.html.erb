@@ -1,20 +1,22 @@
 <h1>Order</h1>
-<ul>
-    <li> 
-      PO Number: <%= @order.po_number%>
-    </li>
-    <li>
-      Value: <%= number_to_currency(@order.value / 100)%>
-    </li>
-    <li>
-      Customer: <%= link_to(@order.customer.name, @order.customer)%>
-    </li>
-</ul>
-
-<h3>Line Items </h3>
-<table class="table">
-  <thead>
+<div class="row">
+    <ul class="list-group list-group-horizontal-md">
+      <li class="list-group-item list-group-item-success">
+        PO Number: <%= @order.po_number%>
+      </li>
+      <li class="list-group-item">
+        Value: <%= number_to_currency(@order.value / 100)%>
+      </li>
+      <li class="list-group-item">
+        Customer: <%= link_to(@order.customer.name, @order.customer)%>
+      </li>
+  </ul>
+</div>
+<h3 class="mt-5">Line Items </h3>
+<table class="table table-striped">
+  <thead class="table-success">
     <tr>
+      <th scope="col">ID</th>
       <th scope="col">Variety</th>
       <th scope="col">Quantity</th>
       <th scope="col">Value</th>
@@ -23,9 +25,10 @@
   <tbody>
     <% @order.line_items.each do |line| %>
         <tr>
-        <td><%= link_to(line.variety.name, line.variety) %></td>
-        <td><%= line.quantity%></td>
-        <td><%= number_to_currency(line.value / 100) %></td>
+          <td><%= link_to(line.id, line) %></td>
+          <td><%= link_to(line.variety.name, line.variety) %></td>
+          <td><%= line.quantity%></td>
+          <td><%= number_to_currency(line.value / 100) %></td>
         </tr>
     <% end %>
   </tbody>

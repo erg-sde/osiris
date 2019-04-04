@@ -1,20 +1,20 @@
 <h1>Location <%= @location.name %></h1>
-
-<ul>
-    <li>
-        Capacity: <%= @location.capacity %>
-    </li>
-    <li>
-        Allocated Capacity: <%= @location.allocated_capacity %>
-    </li>
-    <li>
+<div class="row">
+  <ul class="list-group list-group-horizontal-md">
+    <li class="list-group-item list-group-item-success">
         Available: <%= @location.remaining_capacity %>
     </li>
-</ul>
-
+    <li class="list-group-item">
+        Capacity: <%= @location.capacity %>
+    </li>
+    <li class="list-group-item">
+        Allocated Capacity: <%= @location.allocated_capacity %>
+    </li>
+  </ul>
+</div>
 <h2> Batches </h2>
-<table class="table">
-  <thead>
+<table class="table table-striped">
+  <thead class="table-success">
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Value</th>

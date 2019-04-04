@@ -1,22 +1,43 @@
 <h1><%= @variety.name %></h1>
-<ul>
-    <li>
-        Price: <%= number_to_currency(@variety.price / 100) %>
-    </li>
-    <li>
-        Container: <%= @variety.container.name %>
-    </li>
-</ul>
+<div class="row">
+  <div >
+    <ul class="list-group list-group-horizontal-md">
+      <li class="list-group-item list-group-item-success">
+          Available: <%= @variety.ready_to_ship - @variety.total_ordered %>
+      </li>
+      <li class="list-group-item">
+          Total Ordered: <%= @variety.total_ordered %>
+      </li>
+      <li class="list-group-item">
+          Stage 5: <%= @variety.ready_to_ship %>
+      </li>
+      <li class="list-group-item">
+          Still Growing: <%= @variety.total_plants - @variety.ready_to_ship %>
+      </li>
+      <li class="list-group-item">
+          Total Planted: <%= @variety.total_plants %>
+      </li>
 
-<h2> Batches </h2>
+        <li class="list-group-item">
+            Price: <%= number_to_currency(@variety.price / 100) %>
+        </li>
+        <li class="list-group-item">
+            Container: <%= @variety.container.name %>
+        </li>
 
-<table class="table">
-  <thead>
+    </ul>
+  </div>
+</div>
+
+<h2 class="mt-5"> Batches </h2>
+<table class="table table-striped">
+  <thead class="table-success">
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Value</th>
       <th scope="col">Container Type</th>
       <th scope="col">Container Count</th>
+      <th scope="col">Total Plants</th>
       <th scope="col">Planter</th>
       <th scope="col">Location</th>
       <th scope="col">Soil</th>
@@ -30,10 +51,36 @@
         <td><%= number_to_currency(batch.value)%></td>
         <td><%= batch.container.name %></td>
         <td><%= batch.quantity %></td>
+        <td><%= batch.plant_quantity %></td>
         <td><%= batch.user.email %></td>
         <td><%= link_to(batch.location.name, batch.location) %></td>
         <td><%= batch.soil %></td>
         <td><%= batch.treatment %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2 class="mt-5"> Order Line Items </h2>
+
+<table class="table table-striped">
+  <thead class="table-success">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Value</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Customer</th>
+      <th scope="col">Region</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @variety.line_items.each do |line| %>
+        <tr>
+        <td><%= link_to(line.order.po_number, order_url) %></td>
+        <td><%= number_to_currency(line.value / 100)%></td>
+        <td><%= line.quantity %></td>
+        <td><%= link_to(line.order.customer.name, line.order.customer) %></td>
+        <td><%= line.order.customer.region %></td>
         </tr>
     <% end %>
   </tbody>

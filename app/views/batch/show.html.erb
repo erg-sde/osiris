@@ -1,31 +1,32 @@
 <h1>Batch <%= @batch.id%></h1>
-<ul>
-    <li>
-        Variety: <%= link_to(@batch.variety.name, @batch.variety) %>
-    </li>
-    <li>
-        Quantity: <%= @batch.quantity %>
-    </li>
-    <li>
-        Plants: <%= @batch.plant_quantity %>
-    </li>
-    <li>
-        Value: <%= number_to_currency(@batch.value) %>
-    </li>
-    <li>
-        Location: <%= link_to(@batch.location.name, @batch.location) %>
-    </li>
-    <li>
-        Planted By: <%= @batch.user.email %>
-    </li>
-    <li>
-       Stage: <%= @batch.stage %>
-    </li>
-</ul>
-
+<div class="row">
+  <ul class="list-group list-group-horizontal-md">
+      <li class="list-group-item">
+        <%= link_to(@batch.variety.name, @batch.variety) %>
+      </li>
+      <li class="list-group-item">
+         <%= @batch.quantity %> of <%= @batch.variety.container.name %>
+      </li>
+      <li class="list-group-item">
+        <%= @batch.plant_quantity %> Plants
+      </li>
+      <li class="list-group-item">
+          <%= number_to_currency(@batch.value) %>
+      </li>
+      <li class="list-group-item">
+        <%= link_to("Section " + @batch.location.name.to_s, @batch.location) %>
+      </li>
+      <li class="list-group-item">
+          <%= @batch.user.name %>
+      </li>
+      <li class="list-group-item">
+        Stage <%= @batch.stage %>
+      </li>
+  </ul>
+</div>
 <h3>Orders </h3>
-<table class="table">
-  <thead>
+<table class="table table-striped">
+  <thead class="table-success">
     <tr>
       <th scope="col">PO Number</th>
       <th scope="col">Variety</th>
