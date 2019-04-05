@@ -5,13 +5,21 @@
         PO Number: <%= @order.po_number%>
       </li>
       <li class="list-group-item">
+      Status:
+      <% if @order.ready_to_ship? %>
+        <td> <span class="badge badge-success">Ready</span> </td>
+      <% else %>
+        <td> <span class="badge badge-danger">Not Ready</span> </td>
+      <% end %>
+      </li>
+      <li class="list-group-item">
         Value: <%= number_to_currency(@order.value / 100)%>
       </li>
       <li class="list-group-item">
         Customer: <%= link_to(@order.customer.name, @order.customer)%>
       </li>
       <li class="list-group-item">
-        Customer: <%= @order.customer.region%>
+        Region: <%= @order.customer.region%>
       </li>
   </ul>
 </div>
@@ -39,7 +47,7 @@
             <td> <span class="badge badge-success">Ready</span> </td>
           <% else %>
             <td> <span class="badge badge-danger">Not Ready</span> </td>
-            <% end %>
+          <% end %>
         </tr>
     <% end %>
   </tbody>

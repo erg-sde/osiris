@@ -5,4 +5,8 @@ class Order < ApplicationRecord
   def value
     line_items.sum(&:value)
   end
+
+  def ready_to_ship?
+    line_items.collect(&:ready_to_ship?).all?
+  end
 end

@@ -1,2 +1,21 @@
-<h1>Customer#index</h1>
-<p>Find me in app/views/customer/index.html.erb</p>
+<h1>Customers
+<%= link_to 'New Customer', new_customer_path, class: "btn btn-primary" %></h1>
+<table class="table table-striped">
+  <thead class="table-primary">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Region</th>
+      <th scope="col">Order Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+        <tr>
+            <td><%= link_to(customer.name, customer) %></td>
+            <td><%= customer.region %></td>
+            <td><%= customer.order_count %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
