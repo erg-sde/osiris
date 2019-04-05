@@ -6,7 +6,7 @@
       <th scope="col">PO Number</th>
       <th scope="col">Customer</th>
       <th scope="col">Value</th>
-
+      <th scope="col">Region</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +15,7 @@
             <td><%= link_to(order.po_number, order) %></td>
             <td><%= link_to(order.customer.name, order.customer)%></td>
             <td><%=number_to_currency(order.value / 100)%></td>
+            <td><%= order.customer.region%></td>
         </tr>
     <% end %>
   </tbody>

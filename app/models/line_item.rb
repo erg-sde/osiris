@@ -6,4 +6,12 @@ class LineItem < ApplicationRecord
   def value
     quantity * variety.price
   end
+
+  def allocated
+    line_item_batches.sum('quantity')
+  end
+
+  def ready_to_ship?
+    allocated == quantity
+  end
 end

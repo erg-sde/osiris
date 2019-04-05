@@ -30,20 +30,22 @@
       <th scope="col">Location</th>
       <th scope="col">Soil</th>
       <th scope="col">Treatment</th>
+      <th scope="col">Quantity Allocated</th>
     </tr>
   </thead>
   <tbody>
-    <% @line_item.batches.each do |batch| %>
+    <% @line_item.line_item_batches.each do |li_batch| %>
         <tr>
-        <td><%= link_to("B"+batch.id.to_s, batch) %></td>
-        <td><%= number_to_currency(batch.value)%></td>
-        <td><%= batch.variety.container.name %></td>
-        <td><%= batch.quantity %></td>
-        <td><%= batch.plant_quantity %></td>
-        <td><%= batch.user.email %></td>
-        <td><%= link_to(batch.location.name, batch.location) %></td>
-        <td><%= batch.soil %></td>
-        <td><%= batch.treatment %></td>
+        <td><%= link_to("B"+li_batch.batch.id.to_s, li_batch.batch) %></td>
+        <td><%= number_to_currency(li_batch.batch.value)%></td>
+        <td><%= li_batch.batch.variety.container.name %></td>
+        <td><%= li_batch.batch.quantity %></td>
+        <td><%= li_batch.batch.plant_quantity %></td>
+        <td><%= li_batch.batch.user.email %></td>
+        <td><%= link_to(li_batch.batch.location.name, li_batch.batch.location) %></td>
+        <td><%= li_batch.batch.soil %></td>
+        <td><%= li_batch.batch.treatment %></td>
+        <td><%= li_batch.batch.quantity %></td>
         </tr>
     <% end %>
   </tbody>
