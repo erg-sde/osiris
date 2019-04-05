@@ -1,0 +1,18 @@
+<div class="container ">
+    <div class="card col-md-4">
+    <div class="card-header" >Create a New Customer</div>
+        <div class="row mx-auto m-3">
+            <%= form_for @customer, url: customer_index_path do |f| %>
+                <div class="form-group">
+                    <label>Name</label></br> 
+                    <%= f.text_field :name, class: "form-control" %>
+                </div>
+                 <div class="form-group">
+                    <label>Region</label></br> 
+                    <%= f.text_field :region, class: "form-control" %>
+                </div>
+            <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+</div>

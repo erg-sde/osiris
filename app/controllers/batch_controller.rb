@@ -26,6 +26,7 @@ class BatchController < ApplicationController
     end
   end
 
+  private
   def batch_params
     params.require(:batch).permit(:variety, :location, :quantity, :treatment, :soil)
   end
