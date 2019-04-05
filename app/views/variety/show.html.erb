@@ -49,7 +49,7 @@
         <tr>
         <td><%= link_to("B"+batch.id.to_s, batch) %></td>
         <td><%= number_to_currency(batch.value)%></td>
-        <td><%= batch.container.name %></td>
+        <td><%= batch.variety.container.name %></td>
         <td><%= batch.quantity %></td>
         <td><%= batch.plant_quantity %></td>
         <td><%= batch.user.email %></td>

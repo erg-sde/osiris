@@ -1,6 +1,5 @@
 class Batch < ApplicationRecord
   belongs_to :variety
-  belongs_to :container
   belongs_to :location
   belongs_to :user
   has_many :line_item_batches
@@ -9,7 +8,7 @@ class Batch < ApplicationRecord
   end
 
   def plant_quantity
-    quantity * container.capacity
+    quantity * variety.container.capacity
   end
 
   def value

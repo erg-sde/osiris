@@ -1,2 +1,50 @@
-<h1>LineItem#show</h1>
-<p>Find me in app/views/line_item/show.html.erb</p>
+<h1>Line Item</h1>
+
+<div class="row">
+    <ul class="list-group list-group-horizontal-md">
+      <li class="list-group-item list-group-item-success">
+        Order: <%= link_to(@line_item.order.po_number, @line_item.order)%>
+      </li>
+      <li class="list-group-item ">
+        Variety: <%= link_to(@line_item.variety.name, @line_item.variety)%>
+      </li>
+      <li class="list-group-item">
+        Ordered: <%= @line_item.quantity%>
+      </li>
+      <li class="list-group-item">
+        Value: <%= number_to_currency(@line_item.value / 100)%>
+      </li>
+  </ul>
+</div>
+
+<h2 class="mt-5"> Allocated Batches </h2>
+<table class="table table-striped">
+  <thead class="table-success">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Value</th>
+      <th scope="col">Container Type</th>
+      <th scope="col">Container Count</th>
+      <th scope="col">Total Plants</th>
+      <th scope="col">Planter</th>
+      <th scope="col">Location</th>
+      <th scope="col">Soil</th>
+      <th scope="col">Treatment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @line_item.batches.each do |batch| %>
+        <tr>
+        <td><%= link_to("B"+batch.id.to_s, batch) %></td>
+        <td><%= number_to_currency(batch.value)%></td>
+        <td><%= batch.variety.container.name %></td>
+        <td><%= batch.quantity %></td>
+        <td><%= batch.plant_quantity %></td>
+        <td><%= batch.user.email %></td>
+        <td><%= link_to(batch.location.name, batch.location) %></td>
+        <td><%= batch.soil %></td>
+        <td><%= batch.treatment %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

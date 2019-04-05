@@ -1,5 +1,5 @@
-<h1>Batches</h1>
-
+<h1>Batches
+<%= link_to Batch, new_batch_path, class: "btn btn-primary" %></h1>
 <table class="table table-striped">
   <thead class="table-primary">
     <tr>
@@ -22,7 +22,7 @@
         <td><%= link_to(batch.variety.name, batch.variety) %></td>
         <td><%= batch.stage %></td>
         <td><%= number_to_currency(batch.value)%></td>
-        <td><%= batch.container.name %></td>
+        <td><%= batch.variety.container.name %></td>
         <td><%= batch.quantity %></td>
         <td><%= batch.user.email %></td>
         <td><%= link_to(batch.location.name, batch.location) %></td>
