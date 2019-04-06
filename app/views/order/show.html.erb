@@ -5,6 +5,9 @@
         PO Number: <%= @order.po_number%>
       </li>
       <li class="list-group-item">
+         <%= @order.created_at.strftime("%F")%>
+      </li>
+      <li class="list-group-item">
       Status:
       <% if @order.ready_to_ship? %>
         <td> <span class="badge badge-success">Ready</span> </td>
@@ -16,20 +19,24 @@
         Value: <%= number_to_currency(@order.value / 100)%>
       </li>
       <li class="list-group-item">
-        Customer: <%= link_to(@order.customer.name, @order.customer)%>
+        BIll To: <%= link_to(@order.billing_customer.name, @order.billing_customer)%>
       </li>
       <li class="list-group-item">
-        Region: <%= @order.customer.region%>
+        Ship To: <%= link_to(@order.customer.name, @order.customer)%>
+      </li>
+      <li class="list-group-item">
+        Ship Via: <%= @order.customer.region%>
       </li>
   </ul>
 </div>
-<h3 class="mt-5">Line Items </h3>
+<h3 class="mt-5">Line Items <%= link_to 'New Line Item', new_line_item_path(params: {order: @order}), class: "btn btn-primary"%></h3>
 <table class="table table-striped">
   <thead class="table-success">
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Variety</th>
       <th scope="col">Ordered</th>
+      <th scope="col">Ship Week</th>
       <th scope="col">Allocated</th>
       <th scope="col">Value</th>      
       <th scope="col">Status</th>
@@ -41,6 +48,7 @@
           <td><%= link_to(line.id, line) %></td>
           <td><%= link_to(line.variety.name, line.variety) %></td>
           <td><%= line.quantity%></td>
+          <td><%= line.ship_week%></td>
           <td><%= line.allocated %></td>
           <td><%= number_to_currency(line.value / 100) %></td>          
           <% if line.ready_to_ship? %>

@@ -1,0 +1,23 @@
+
+<div class="container ">
+    <div class="card col-md-4">
+    <div class="card-header" >Create a New Order</div>
+        <div class="row mx-auto m-3">
+            <%= form_for @order, url: order_index_path do |f| %>
+                <div class="form-group">
+                    <label>PO Number</label></br> 
+                    <%= f.text_field :po_number,  class: "form-control" %>
+                </div> 
+                <div class="form-group">
+                    <label>Bill To</label></br> 
+                    <%= f.select 'billing_customer',  options_from_collection_for_select(@customers, 'id', 'name'), class: "form-control" %>
+                </div> 
+                <div class="form-group">
+                    <label>Ship To</label></br>
+                    <%= f.select 'customer',  options_from_collection_for_select(@customers, 'id', 'name'), class: "form-control" %>
+                </div>
+            <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+</div>

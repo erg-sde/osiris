@@ -1,0 +1,23 @@
+<div class="container ">
+    <div class="card col-md-4">
+    <div class="card-header" >New Line Item for PO <%= @order.po_number %> </div>
+        <div class="row mx-auto m-3">
+            <%= form_for @line_item, url: line_item_index_path do |f| %>
+                <div class="form-group">
+                    <label>Plant Type</label></br> 
+                    <%= f.select 'variety',  options_from_collection_for_select(@varieties, 'id', 'name'), class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <label>Quantity</label> 
+                    <%= f.text_field :quantity, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <label>Ship Week</label> 
+                    <%= f.text_field :ship_week, class: "form-control" %>
+                </div>
+            <%= f.hidden_field :order, value: @order.id %>
+            <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 class Customer < ApplicationRecord
-has_many :orders
+    has_many :orders, class_name: "Order", foreign_key: 'customer_id'
+    has_many :billing_orders, class_name: "Order", foreign_key: 'billing_customer_id'
+    
     def order_count
         orders.length
     end

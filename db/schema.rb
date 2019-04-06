@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_04_014015) do
+ActiveRecord::Schema.define(version: 2019_04_06_160940) do
 
   create_table "batches", force: :cascade do |t|
     t.integer "variety_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_04_04_014015) do
     t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ship_week"
     t.index ["order_id"], name: "index_line_items_on_order_id"
     t.index ["variety_id"], name: "index_line_items_on_variety_id"
   end
@@ -76,6 +77,8 @@ ActiveRecord::Schema.define(version: 2019_04_04_014015) do
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "billing_customer_id"
+    t.index ["billing_customer_id"], name: "index_orders_on_billing_customer_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
