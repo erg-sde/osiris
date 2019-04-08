@@ -1,6 +1,6 @@
 class BatchesController < ApplicationController
   def index
-    @batches = Batch.all
+    @batches = Batch.where.not(stage: '0')
   end
 
   def show
@@ -36,13 +36,22 @@ class BatchesController < ApplicationController
     if params[:dump]
       @dump = Batch.new(parent: @batch, 
                         variety: @batch.variety,
-                        quantity:params[:dump],
+                        quantity:params[:dump].to_i,
                         location: @batch.location,
                         user: @batch.user,
                         stage: '0')
-      if @dump.save
-      end
+      @dump.save
     end
+    if params[:cull]
+      @cull = Batch.new(parent: @batch, 
+        variety: @batch.variety,
+        quantity:params[:cull].to_i,
+        location: @batch.location,
+        user: @batch.user,
+        stage: @batch.stage)
+      @cull.save
+    end
+    @batch.stage = params[:batch][:stage]
     @batch.save
     redirect_to @batch
   end

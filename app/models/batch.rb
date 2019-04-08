@@ -11,9 +11,23 @@ class Batch < ApplicationRecord
   end
 
   def dumped_plants
-    children.where(stage: '0').sum('quantity')
+    children.where(stage: '0').sum('quantity') * variety.container.capacity
   end
-  
+
+  def culled_plants
+    children.where.not(stage: '0').sum('quantity') * variety.container.capacity
+  end
+
+  def type
+    if stage == '0'
+      'dump'
+    elsif !parent.nil?
+      'cull'
+    else
+      'parent'
+    end
+  end
+
   def plant_quantity
     quantity * variety.container.capacity
   end
@@ -27,7 +41,7 @@ class Batch < ApplicationRecord
   end
 
   def plants_available
-    plant_quantity - plants_shipped
+    plant_quantity - plants_shipped - dumped_plants - culled_plants
   end
 
   def next_stage

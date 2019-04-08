@@ -4,9 +4,15 @@
         <%= form_for @batch do |f| %>
             <%= f.hidden_field :stage, value: @batch.next_stage %>
                 <div class="form-group">
-                    <label>Dump</label> 
+                    <label>Containers Dumped</label> 
                     <%= f.text_field :quantity, name: 'dump', class: "form-control", value: '0' %>
                 </div>
+                <% if @batch.stage.to_i > 1 %>
+                    <div class="form-group">
+                        <label>Containers Culled</label> 
+                        <%= f.text_field :quantity, name: 'cull', class: "form-control", value: '0' %>
+                    </div>
+                <% end %>
             <%= f.submit "Submit"%>
         <% end %>
         </div>

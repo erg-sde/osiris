@@ -8,7 +8,7 @@
          <%= @batch.quantity %> of <%= @batch.variety.container.name %>
       </li>
       <li class="list-group-item">
-        <%= @batch.plant_quantity %> Plants
+        <%= @batch.plants_available %> Plants
       </li>
       <li class="list-group-item">
           <%= number_to_currency(@batch.value) %>
@@ -24,21 +24,21 @@
       </li>
   </ul>
 </div>
-<h3>Orders </h3>
+<h3>Batch History</h3>
 <table class="table table-striped">
   <thead class="table-success">
     <tr>
-      <th scope="col">PO Number</th>
-      <th scope="col">Variety</th>
-      <th scope="col">Quantity Allocated</th>
+      <th scope="col">date</th>
+      <th scope="col">Type </th>
+      <th scope="col">Amount</th>
     </tr>
   </thead>
   <tbody>
-    <% @batch.line_item_batches.each do |lib| %>
+    <% @batch.children.each do |child| %>
         <tr>
-        <td><%= link_to(lib.line_item.order.po_number, lib.line_item.order) %></td>
-        <td><%= link_to(lib.line_item.variety.name, lib.line_item.variety)%></td>
-        <td><%= lib.quantity %></td>
+          <td><%= child.created_at.strftime('%F') %></td>
+          <td><%= child.type %></td>
+          <td><%= child.plant_quantity %></td>
         </tr>
     <% end %>
   </tbody>
