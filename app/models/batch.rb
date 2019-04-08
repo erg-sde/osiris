@@ -4,7 +4,7 @@ class Batch < ApplicationRecord
   belongs_to :user
   has_many :line_item_batches
   def week_planted
-    created_at.strftime('%U').to_i
+    created_at.strftime('%W').to_i
   end
 
   def plant_quantity

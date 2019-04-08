@@ -19,8 +19,8 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
-          <li class="<%= params[:controller] == 'variety' ? 'nav-item, active' : 'nav-item' %>" >
-            <%= link_to("Plants", variety_index_url, class: 'nav-link')%>
+          <li class="<%= params[:controller] == 'varieties' ? 'nav-item, active' : 'nav-item' %>" >
+            <%= link_to("Plants", varieties_path, class: 'nav-link')%>
           </li>
           <li class="<%= params[:controller] == 'batch' ? 'nav-item, active' : 'nav-item' %>" >
             <%= link_to("Prod In", batch_index_url, class:"nav-link")%>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users
   resources :line_items, :order,:customer,
-            :batch, :location, :variety,
+            :batch, :location, :varieties,
             :line_item_batches
  
   unauthenticated do
@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   end
 
   authenticated do
-    root to: 'variety#index'
+    root to: 'varieties#index'
   end
 end
