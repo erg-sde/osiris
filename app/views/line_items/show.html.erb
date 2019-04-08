@@ -12,40 +12,41 @@
         Ordered: <%= @line_item.quantity%>
       </li>
       <li class="list-group-item">
+        Shipped: <%= @line_item.allocated%>
+      </li>
+      <li class="list-group-item">
+        Left to Ship: <%= @line_item.to_ship%>
+      </li>
+      <li class="list-group-item">
         Value: <%= number_to_currency(@line_item.value / 100)%>
+      </li>
+      <li class="list-group-item">         
+        <% if @line_item.ready_to_ship? %>
+          <span class="badge badge-success">Shipped</span>
+        <% else %>
+          <span class="badge badge-danger">Pending</span>
+        <% end %>
       </li>
   </ul>
 </div>
 
-<h2 class="mt-5"> Shipped Batches </h2>
+<h2 class="mt-5"> Plants Shipped </h2>
 <table class="table table-striped">
   <thead class="table-success">
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Value</th>
-      <th scope="col">Container Type</th>
-      <th scope="col">Container Count</th>
-      <th scope="col">Total Plants</th>
-      <th scope="col">Planter</th>
-      <th scope="col">Location</th>
-      <th scope="col">Soil</th>
-      <th scope="col">Treatment</th>
-      <th scope="col">Quantity Allocated</th>
+      <th scope="col">Source</th>
+      <th scope="col">Date Shipped</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Containers </th>
     </tr>
   </thead>
   <tbody>
     <% @line_item.line_item_batches.each do |li_batch| %>
         <tr>
-        <td><%= link_to("B"+li_batch.batch.id.to_s, li_batch.batch) %></td>
-        <td><%= number_to_currency(li_batch.batch.value)%></td>
-        <td><%= li_batch.batch.variety.container.name %></td>
-        <td><%= li_batch.batch.quantity %></td>
-        <td><%= li_batch.batch.plant_quantity %></td>
-        <td><%= li_batch.batch.user.email %></td>
-        <td><%= link_to(li_batch.batch.location.name, li_batch.batch.location) %></td>
-        <td><%= li_batch.batch.soil %></td>
-        <td><%= li_batch.batch.treatment %></td>
-        <td><%= li_batch.batch.quantity %></td>
+          <td><%= link_to("B"+li_batch.batch.id.to_s, li_batch.batch) %></td>
+          <td><%= li_batch.batch.created_at.strftime("%F") %></td>
+          <td><%= li_batch.quantity %></td>
+          <td><%= li_batch.container_count %></td>  
         </tr>
     <% end %>
   </tbody>

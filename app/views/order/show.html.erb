@@ -8,16 +8,12 @@
          <%= @order.created_at.strftime("%F")%>
       </li>
       <li class="list-group-item">
-      Status:
       <% if @order.ready_to_ship? %>
-        <td> <span class="badge badge-success">Ready</span> </td>
+        <td> <span class="badge badge-success">Shipped</span> </td>
       <% else %>
-        <td> <span class="badge badge-danger">Not Ready</span> </td>
+        <td> <span class="badge badge-danger">Pending</span> </td>
       <% end %>
-      </li>
-      <li class="list-group-item">
-        Value: <%= number_to_currency(@order.value / 100)%>
-      </li>
+
       <li class="list-group-item">
         BIll To: <%= link_to(@order.billing_customer.name, @order.billing_customer)%>
       </li>
@@ -26,6 +22,10 @@
       </li>
       <li class="list-group-item">
         Ship Via: <%= @order.customer.region%>
+      </li>
+      </li>
+      <li class="list-group-item">
+        Value: <%= number_to_currency(@order.value / 100)%>
       </li>
   </ul>
 </div>
@@ -54,14 +54,14 @@
           <td><%= number_to_currency(line.value / 100) %></td> 
           <td>         
             <% if line.ready_to_ship? %>
-              <span class="badge badge-success">Ready</span>
+              <span class="badge badge-success">Shipped</span>
             <% else %>
-              <span class="badge badge-danger">Not Ready</span>
+              <span class="badge badge-danger">Pending</span>
             <% end %>
           </td>
           <td>
             <%= link_to edit_line_item_path(line.id) do %>
-              <%= fa_icon 'truck' %>
+                <%= fa_icon 'truck', class: 'btn btn-primary' %>
             <% end %>
           </td>
         </tr>

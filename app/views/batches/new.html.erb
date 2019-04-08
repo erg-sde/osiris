@@ -3,7 +3,7 @@
     <div class="card col-md-4">
     <div class="card-header" >Production In</div>
         <div class="row mx-auto m-3">
-            <%= form_for @batch, url: batch_index_path do |f| %>
+            <%= form_for @batch do |f| %>
                 <div class="form-group">
                     <label>Plant Type</label></br> 
                     <%= f.select 'variety',  options_from_collection_for_select(@varieties, 'id', 'name'), class: "form-control" %>

@@ -14,6 +14,10 @@ class LineItem < ApplicationRecord
   end
 
   def ready_to_ship?
-    allocated == quantity
+    allocated >= quantity
+  end
+
+  def to_ship
+    allocated - quantity
   end
 end

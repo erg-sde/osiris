@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_06_160940) do
+ActiveRecord::Schema.define(version: 2019_04_08_173149) do
 
   create_table "batches", force: :cascade do |t|
     t.integer "variety_id"
@@ -23,8 +23,10 @@ ActiveRecord::Schema.define(version: 2019_04_06_160940) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "parent_id"
     t.index ["container_id"], name: "index_batches_on_container_id"
     t.index ["location_id"], name: "index_batches_on_location_id"
+    t.index ["parent_id"], name: "index_batches_on_parent_id"
     t.index ["user_id"], name: "index_batches_on_user_id"
     t.index ["variety_id"], name: "index_batches_on_variety_id"
   end
