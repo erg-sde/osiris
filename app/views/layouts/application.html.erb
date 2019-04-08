@@ -19,19 +19,22 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to("Varieties", variety_index_url, class:"nav-link")%>
+          <li class="<%= params[:controller] == 'variety' ? 'nav-item, active' : 'nav-item' %>" >
+            <%= link_to("Plants", variety_index_url, class: 'nav-link')%>
           </li>
-          <li class="nav-item active">
-            <%= link_to("Batches", batch_index_url, class:"nav-link")%>
+          <li class="<%= params[:controller] == 'batch' ? 'nav-item, active' : 'nav-item' %>" >
+            <%= link_to("Prod In", batch_index_url, class:"nav-link")%>
           </li>
-          <li class="nav-item active">
+          <li class="<%= params[:controller] == 'line_item' ? 'nav-item, active' : 'nav-item' %>" >
+            <%= link_to("Prod out", line_items_path, class:"nav-link")%>
+          </li>
+          <li class="<%= params[:controller] == 'location' ? 'nav-item, active' : 'nav-item' %>" >
             <%= link_to("Locations", location_index_url, class:"nav-link")%>
           </li> 
-          <li class="nav-item active">
+          <li class="<%= params[:controller] == 'order' ? 'nav-item, active' : 'nav-item' %>" >
             <%= link_to("Orders", order_index_url, class:"nav-link")%>
           </li> 
-          <li class="nav-item active">
+          <li class="<%= params[:controller] == 'customer' ? 'nav-item, active' : 'nav-item' %>" >
             <%= link_to("Customers", customer_index_url, class:"nav-link")%>
           </li> 
       </ul> 

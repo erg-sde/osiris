@@ -8,7 +8,7 @@
       <th scope="col">Week </th>
       <th scope="col">Stage</th>
       <th scope="col">Value</th>
-      <th scope="col">Container Type</th>
+      <th scope="col">Container</th>
       <th scope="col">Count</th>
       <th scope="col">Planter</th>
       <th scope="col">Location</th>
@@ -26,7 +26,7 @@
         <td><%= number_to_currency(batch.value)%></td>
         <td><%= batch.variety.container.name %></td>
         <td><%= batch.quantity %></td>
-        <td><%= batch.user.email %></td>
+        <td><%= batch.user.name %></td>
         <td><%= link_to(batch.location.name, batch.location) %></td>
         <td><%= batch.soil %></td>
         <td><%= batch.treatment %></td>

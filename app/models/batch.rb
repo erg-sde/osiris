@@ -14,4 +14,12 @@ class Batch < ApplicationRecord
   def value
     quantity * variety.price / 100
   end
+
+  def plants_shipped
+    line_item_batches.sum('quantity')
+  end
+
+  def plants_available
+    plant_quantity - plants_shipped
+  end
 end

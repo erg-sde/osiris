@@ -1,0 +1,27 @@
+<h1> Choose a Batch to Ship From </h2>
+
+<h2 class="mt-5"> Batches </h2>
+<%= form_for @line_item do |f| %>
+    <table class="table table-striped">
+        <thead class="table-success">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Total Plants</th>
+                <th scope="col">Location</th>
+                <th scope="col">Quantity to Ship</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @batches.each do |batch| %>
+                <tr>
+                    <td><%= link_to("B"+batch.id.to_s, batch) %></td>
+                    <td><%= batch.plant_quantity %></td>
+                    <td><%= link_to(batch.location.name, batch.location) %></td>
+                    <%= f.hidden_field batch, value: batch.id, name: 'batches[]'%>
+                    <td><%= f.text_field :quantity, name: "quantities[]", class: 'form-control' %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%= f.submit "Ship Plants"%>
+<% end %>
