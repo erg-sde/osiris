@@ -5,10 +5,9 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Variety</th>
+      <th scope="col">Type</th>
       <th scope="col">Week </th>
       <th scope="col">Stage</th>
-      <th scope="col">Value</th>
-      <th scope="col">Container</th>
       <th scope="col">Count</th>
       <th scope="col">Planter</th>
       <th scope="col">Location</th>
@@ -22,11 +21,10 @@
         <tr>
           <td><%= link_to("B"+batch.id.to_s, batch) %></td>
           <td><%= link_to(batch.variety.name, batch.variety) %></td>
+          <td><%= batch.type.capitalize %></td>
           <td><%= batch.week_planted %></td>
           <td><%= batch.stage %></td>
-          <td><%= number_to_currency(batch.value)%></td>
-          <td><%= batch.variety.container.name %></td>
-          <td><%= batch.quantity %></td>
+          <td><%= batch.plants_available %></td>
           <td><%= batch.user.name %></td>
           <td><%= link_to(batch.location.name, batch.location) %></td>
           <td><%= batch.soil %></td>

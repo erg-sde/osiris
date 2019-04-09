@@ -1,6 +1,6 @@
 class BatchesController < ApplicationController
   def index
-    @batches = Batch.where.not(stage: '0')
+    @batches = Batch.primary.order(stage: :desc).select{|batch| batch.plants_available?}
   end
 
   def show

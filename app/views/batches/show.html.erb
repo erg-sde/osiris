@@ -43,3 +43,23 @@
     <% end %>
   </tbody>
 </table>
+
+<h3>Shipped Orders</h3>
+<table class="table table-striped">
+  <thead class="table-success">
+    <tr>
+      <th scope="col">Order</th>
+      <th scope="col">Date</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @batch.line_item_batches.each do |lib| %>
+        <tr>
+          <td><%= lib.line_item.order.po_number %></td>
+          <td><%= lib.created_at.strftime('%F') %></td>          
+          <td><%= lib.quantity %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
