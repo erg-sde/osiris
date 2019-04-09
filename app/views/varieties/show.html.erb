@@ -35,9 +35,7 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Value</th>
-      <th scope="col">Container Type</th>
-      <th scope="col">Container Count</th>
-      <th scope="col">Total Plants</th>
+      <th scope="col">Available</th>
       <th scope="col">Stage</th>
       <th scope="col">Planter</th>
       <th scope="col">Location</th>
@@ -46,13 +44,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @variety.parent_batches.each do |batch| %>
+    <% @variety.present_parent_batches.each do |batch| %>
         <tr>
         <td><%= link_to("B"+batch.id.to_s, batch) %></td>
         <td><%= number_to_currency(batch.value)%></td>
-        <td><%= batch.variety.container.name %></td>
-        <td><%= batch.quantity %></td>
-        <td><%= batch.plant_quantity %></td>
+        <td><%= batch.plants_available %></td>
         <td><%= batch.stage %></td>
         <td><%= batch.user.email %></td>
         <td><%= link_to(batch.location.name, batch.location) %></td>

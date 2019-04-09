@@ -1,4 +1,4 @@
-<h3 class="mt-5">Line Items <%= link_to 'New Line Item', new_line_item_path(params: {order: @order}), class: "btn btn-primary"%></h3>
+<h3 class="mt-5">Line Items</h3>
 <table class="table table-striped">
   <thead class="table-success">
     <tr>
@@ -9,6 +9,7 @@
       <th scope="col">Allocated</th>
       <th scope="col">Value</th>      
       <th scope="col">Status</th>
+      <th scope="col">Ship</th>
     </tr>
   </thead>
   <tbody>
@@ -19,12 +20,19 @@
           <td><%= line.quantity%></td>
           <td><%= line.ship_week%></td>
           <td><%= line.allocated %></td>
-          <td><%= number_to_currency(line.value / 100) %></td>          
-          <% if line.ready_to_ship? %>
-            <td> <span class="badge badge-success">Ready</span> </td>
-          <% else %>
-            <td> <span class="badge badge-danger">Not Ready</span> </td>
-          <% end %>
+          <td><%= number_to_currency(line.value / 100) %></td>  
+          <td>         
+            <% if line.ready_to_ship? %>
+              <span class="badge badge-success">Ready</span>
+            <% else %>
+              <span class="badge badge-danger">Not Ready</span> 
+            <% end %>
+          </td>
+          <td>
+            <%= link_to edit_line_item_path(line.id) do %>
+              <%= fa_icon 'truck', class: 'btn btn-primary' %>
+            <% end %>
+          </td>
         </tr>
     <% end %>
   </tbody>

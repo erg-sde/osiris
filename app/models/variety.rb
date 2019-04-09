@@ -7,7 +7,7 @@ class Variety < ApplicationRecord
   end
 
   def ready_to_ship
-    batches.where(stage: '5').sum(&:plants_available) * container.capacity
+    batches.where(stage: '5').sum(&:plants_available)
   end
 
   def total_plants
@@ -32,5 +32,9 @@ class Variety < ApplicationRecord
 
   def parent_batches
     batches.select{|batch| batch.type == 'parent'}
+  end
+
+  def present_parent_batches
+    batches.select{|batch| batch.type == 'parent' && batch.plants_available > 0}
   end
 end
