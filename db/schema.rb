@@ -10,21 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_173149) do
+ActiveRecord::Schema.define(version: 2019_04_13_162516) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "batches", force: :cascade do |t|
-    t.integer "variety_id"
+    t.bigint "variety_id"
     t.integer "quantity"
-    t.integer "container_id"
     t.string "stage"
-    t.integer "location_id"
+    t.bigint "location_id"
     t.string "treatment"
     t.string "soil"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "parent_id"
-    t.index ["container_id"], name: "index_batches_on_container_id"
+    t.bigint "user_id"
+    t.bigint "parent_id"
     t.index ["location_id"], name: "index_batches_on_location_id"
     t.index ["parent_id"], name: "index_batches_on_parent_id"
     t.index ["user_id"], name: "index_batches_on_user_id"
@@ -46,8 +47,8 @@ ActiveRecord::Schema.define(version: 2019_04_08_173149) do
   end
 
   create_table "line_item_batches", force: :cascade do |t|
-    t.integer "line_item_id"
-    t.integer "batch_id"
+    t.bigint "line_item_id"
+    t.bigint "batch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity"
@@ -56,9 +57,9 @@ ActiveRecord::Schema.define(version: 2019_04_08_173149) do
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.integer "variety_id"
+    t.bigint "variety_id"
     t.integer "quantity"
-    t.integer "order_id"
+    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ship_week"
@@ -76,10 +77,10 @@ ActiveRecord::Schema.define(version: 2019_04_08_173149) do
   create_table "orders", force: :cascade do |t|
     t.string "po_number"
     t.string "region"
-    t.integer "customer_id"
+    t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "billing_customer_id"
+    t.bigint "billing_customer_id"
     t.index ["billing_customer_id"], name: "index_orders_on_billing_customer_id"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
@@ -100,10 +101,19 @@ ActiveRecord::Schema.define(version: 2019_04_08_173149) do
   create_table "varieties", force: :cascade do |t|
     t.string "name"
     t.integer "price"
-    t.integer "container_id"
+    t.bigint "container_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["container_id"], name: "index_varieties_on_container_id"
   end
 
+  add_foreign_key "batches", "locations"
+  add_foreign_key "batches", "users"
+  add_foreign_key "batches", "varieties"
+  add_foreign_key "line_item_batches", "batches"
+  add_foreign_key "line_item_batches", "line_items"
+  add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "varieties"
+  add_foreign_key "orders", "customers"
+  add_foreign_key "varieties", "containers"
 end
