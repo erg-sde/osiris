@@ -49,6 +49,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "hirb", "~> 0.7.3"
   gem 'faker'
+  gem 'rails-erd'
 end
 
 group :test do

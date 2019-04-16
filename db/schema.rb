@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_162516) do
+ActiveRecord::Schema.define(version: 2019_04_16_170130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_162516) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "parent_id"
+    t.date "planted_week"
     t.index ["location_id"], name: "index_batches_on_location_id"
     t.index ["parent_id"], name: "index_batches_on_parent_id"
     t.index ["user_id"], name: "index_batches_on_user_id"
@@ -104,6 +105,8 @@ ActiveRecord::Schema.define(version: 2019_04_13_162516) do
     t.bigint "container_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "root_time"
+    t.integer "reorder_amount"
     t.index ["container_id"], name: "index_varieties_on_container_id"
   end
 

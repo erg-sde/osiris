@@ -6,9 +6,9 @@ class Batch < ApplicationRecord
   has_one :container, through: :variety
   has_many :line_item_batches
   has_many :children, class_name: 'Batch', foreign_key: 'parent_id'
-  
+
   scope :primary, -> { where.not(stage: '0') }
- 
+
   def week_planted
     created_at.strftime('%W').to_i
   end
@@ -41,12 +41,28 @@ class Batch < ApplicationRecord
     plant_quantity - plants_shipped - dumped_plants - culled_plants
   end
 
-  def plants_available?
-    plants_available > 0
+  def next_stage
+    stages = %w[1 3 5 6 7]
+    stages[stages.index(stage) + 1]
   end
 
-  def next_stage
-    stages = ["1", "3", "5", "6", "7"]
-    stages[stages.index(stage) + 1]
+  def dump(amount)
+    dump = Batch.new(parent: self,
+                     variety: variety,
+                     quantity: amount.to_i,
+                     location: location,
+                     user: user,
+                     stage: '0')
+    dump.save
+  end
+
+  def cull(amount)
+    cull = Batch.new(parent: self,
+                     variety: variety,
+                     quantity: amount.to_i,
+                     location: location,
+                     user: user,
+                     stage: stage)
+    cull.save
   end
 end
