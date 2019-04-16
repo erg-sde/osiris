@@ -17,12 +17,19 @@
       <li class="list-group-item">
           On-hand: <%= @variety.total_plants %>
       </li>
-
+    </ul>
+    <ul class="list-group list-group-horizontal-md">
         <li class="list-group-item">
             Price: <%= number_to_currency(@variety.price / 100) %>
         </li>
         <li class="list-group-item">
             Container: <%= @variety.container.name %>
+        </li>
+        <li class="list-group-item">
+            Weeks To Root: <%= @variety.root_time %>
+        </li>
+        <li class="list-group-item">
+            Reorder Amount: <%= @variety.reorder_amount %>
         </li>
 
     </ul>
