@@ -26,7 +26,7 @@
         Value: <%= number_to_currency(@line_item.value / 100)%>
       </li>
       <li class="list-group-item">         
-        <% if @line_item.ready_to_ship? %>
+        <% if @line_item.shipped? %>
           <span class="badge badge-success">Shipped</span>
         <% else %>
           <span class="badge badge-danger">Pending</span>

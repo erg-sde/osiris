@@ -22,7 +22,7 @@ class Batch < ApplicationRecord
   end
 
   def type
-    stage == '0' ? 'dump' : !parent.nil? ? 'cull' : 'parent'
+    stage == '0' ? 'Dump' : !parent.nil? ? 'Cull' : 'Parent'
   end
 
   def plant_quantity

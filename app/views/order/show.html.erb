@@ -8,7 +8,7 @@
          <%= @order.created_at.strftime("%F")%>
       </li>
       <li class="list-group-item">
-      <% if @order.ready_to_ship? %>
+      <% if @order.shipped? %>
         <td> <span class="badge badge-success">Shipped</span> </td>
       <% else %>
         <td> <span class="badge badge-danger">Pending</span> </td>
@@ -59,7 +59,7 @@
           <td><%= line.allocated %></td>
           <td><%= number_to_currency(line.value / 100) %></td> 
           <td>         
-            <% if line.ready_to_ship? %>
+            <% if line.shipped? %>
               <span class="badge badge-success">Shipped</span>
             <% else %>
               <span class="badge badge-danger">Pending</span>

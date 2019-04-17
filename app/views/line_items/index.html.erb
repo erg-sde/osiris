@@ -22,7 +22,7 @@
           <td><%= line.allocated %></td>
           <td><%= number_to_currency(line.value / 100) %></td>  
           <td>         
-            <% if line.ready_to_ship? %>
+            <% if line.shipped? %>
               <span class="badge badge-success">Shipped</span>
             <% else %>
               <span class="badge badge-danger">Pending</span> 

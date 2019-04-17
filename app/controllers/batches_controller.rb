@@ -47,6 +47,6 @@ class BatchesController < ApplicationController
 
   def batch_params
     params.require(:batch).permit(:user, :variety, :location, :quantity,
-                                  :treatment, :soil, :dump, :stage, :type)
+                                  :treatment, :soil, :dump)
   end
 end

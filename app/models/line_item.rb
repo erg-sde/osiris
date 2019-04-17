@@ -13,7 +13,7 @@ class LineItem < ApplicationRecord
     line_item_batches.sum('quantity')
   end
 
-  def ready_to_ship?
+  def shipped?
     allocated >= quantity
   end
 

@@ -5,6 +5,7 @@
 </h1>
 <div>
   <%= form_tag batches_path, method: 'get' do %>
+    <a> Stage </a>
     <%= select_tag :stage, options_for_select(@stages, params[:stage]) %>
     <%= submit_tag "Filter" %>
   <% end %>

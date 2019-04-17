@@ -9,8 +9,8 @@ class Order < ApplicationRecord
     line_items.sum(&:value)
   end
 
-  def ready_to_ship?
-    line_items.collect(&:ready_to_ship?).all?
+  def shipped?
+    line_items.collect(&:shipped?).all?
   end
 
 end
