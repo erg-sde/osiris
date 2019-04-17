@@ -12,6 +12,7 @@
       <th scope="col">Line Items</th>
       <th scope="col">Value</th>
       <th scope="col">Region</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +23,13 @@
             <td><%= order.line_items.length %></td>
             <td><%=number_to_currency(order.value / 100)%></td>
             <td><%= order.customer.region%></td>
+            <td>
+              <% if order.shipped? %>
+                <span class="badge badge-success">Shipped</span>
+              <% else %>
+                <span class="badge badge-danger">Pending</span> 
+              <% end %>
+            </td>
         </tr>
     <% end %>
   </tbody>

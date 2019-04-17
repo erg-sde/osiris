@@ -24,7 +24,8 @@ class LineItemsController < ApplicationController
   end
 
   def index
-    @line_items = LineItem.all
+    @line_items = LineItem.where(nil)
+    @line_items = @line_items.select{ |batch| !batch.shipped? }
   end
 
   def edit

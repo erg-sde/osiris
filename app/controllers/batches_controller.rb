@@ -36,8 +36,8 @@ class BatchesController < ApplicationController
 
   def update
     @batch = Batch.find(params[:id])
-    @batch.dump(params[:dump]) if params[:dump]
-    @batch.cull(params[:cull]) if params[:cull]
+    @batch.dump(params[:dump]) if params[:dump].to_i.positive?
+    @batch.cull(params[:cull]) if params[:cull].to_i.positive?
     @batch.stage = params[:batch][:stage]
     @batch.save
     redirect_to @batch
