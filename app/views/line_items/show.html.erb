@@ -1,9 +1,14 @@
-<h1>Line Item</h1>
+<h1>
+  Line Item
+  <%= link_to edit_line_item_path(@line_item) do %>
+    <%= fa_icon 'truck', class: 'btn btn-primary' %>
+  <% end %>
+</h1>
 
 <div class="row">
     <ul class="list-group list-group-horizontal-md">
       <li class="list-group-item list-group-item-success">
-        Order: <%= link_to(@line_item.order.po_number, @line_item.order)%>
+        PO: <%= link_to(@line_item.order.po_number, @line_item.order)%>
       </li>
       <li class="list-group-item ">
         Variety: <%= link_to(@line_item.variety.name, @line_item.variety)%>

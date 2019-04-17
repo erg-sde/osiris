@@ -18,6 +18,6 @@ class LineItem < ApplicationRecord
   end
 
   def to_ship
-    allocated - quantity
+    quantity - allocated
   end
 end

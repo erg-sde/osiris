@@ -1,5 +1,15 @@
 <h1>Batches
-<%= link_to 'New Batch', new_batch_path, class: "btn btn-primary" %></h1>
+  <%= link_to new_batch_path do %>
+    <%= fa_icon 'plus-square', class: 'btn btn-success' %>
+  <% end %>
+</h1>
+<div>
+  <%= form_tag batches_path, method: 'get' do %>
+    <%= select_tag :stage, options_for_select(@stages, params[:stage]) %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
 <table class="table table-striped">
   <thead class="table-primary">
     <tr>
@@ -39,4 +49,5 @@
     <% end %>
   </tbody>
 </table>
+
 

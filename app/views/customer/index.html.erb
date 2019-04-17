@@ -1,5 +1,8 @@
 <h1>Customers
-<%= link_to 'New Customer', new_customer_path, class: "btn btn-primary" %></h1>
+  <%= link_to new_customer_path do %>
+    <%= fa_icon 'plus-square', class: 'btn btn-success' %>
+  <% end %>
+</h1>
 <table class="table table-striped">
   <thead class="table-primary">
     <tr>

@@ -3,6 +3,6 @@ class LineItemBatch < ApplicationRecord
   belongs_to :batch
 
   def container_count
-    quantity / batch.container.capacity
+    quantity.nil? ? 0 : quantity / batch.container.capacity
   end
 end

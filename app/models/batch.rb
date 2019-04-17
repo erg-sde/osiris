@@ -1,14 +1,14 @@
 class Batch < ApplicationRecord
   belongs_to :variety
   belongs_to :location
-  belongs_to :user 
+  belongs_to :user
   belongs_to :parent, class_name: 'Batch', optional: true
   has_one :container, through: :variety
   has_many :line_item_batches
   has_many :children, class_name: 'Batch', foreign_key: 'parent_id'
 
   scope :primary, -> { where.not(stage: '0') }
-
+  scope :stage, ->(stage) { where stage: stage }
   def week_planted
     created_at.strftime('%W').to_i
   end

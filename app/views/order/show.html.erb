@@ -28,8 +28,14 @@
         Value: <%= number_to_currency(@order.value / 100)%>
       </li>
   </ul>
-</div>
-<h3 class="mt-5">Line Items <%= link_to 'New Line Item', new_line_item_path(params: {order: @order}), class: "btn btn-primary"%></h3>
+</div>  
+
+<h3 class="mt-5">Line Items 
+  <%= link_to new_line_item_path(params: {order: @order}) do %> 
+    <%= fa_icon 'plus-square', class: 'btn btn-success' %>
+  <% end %>
+</h3>
+
 <table class="table table-striped">
   <thead class="table-success">
     <tr>

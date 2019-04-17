@@ -1,6 +1,9 @@
 class BatchesController < ApplicationController
   def index
-    @batches = Batch.primary.order(stage: :desc).select{|batch| batch.plants_available.positive?}
+    @batches = Batch.where(nil).primary
+    @batches = @batches.stage(params[:stage]) if params[:stage].present?
+    @batches = @batches.select { |batch| batch.plants_available.positive? }
+    @stages = %w[1 3 5 6 7]
   end
 
   def show
@@ -22,7 +25,7 @@ class BatchesController < ApplicationController
     @batch = Batch.new(bp)
     @batch.stage = '1'
     if @batch.save
-      flash[:success] = "Batch Saved"
+      flash[:success] = 'Batch Saved'
       redirect_to @batch
     end
   end
@@ -44,6 +47,6 @@ class BatchesController < ApplicationController
 
   def batch_params
     params.require(:batch).permit(:user, :variety, :location, :quantity,
-                                  :treatment, :soil, :dump)
+                                  :treatment, :soil, :dump, :stage, :type)
   end
 end

@@ -15,7 +15,11 @@
   </ul>
 </div>
 
-<h3>Orders </h3>
+<h3>Orders  
+  <%= link_to new_order_path do %>
+      <%= fa_icon 'plus-square', class: 'btn btn-success' %>
+  <% end %> 
+</h3>
 <table class="table table-striped">
   <thead class="table-success">
     <tr>
