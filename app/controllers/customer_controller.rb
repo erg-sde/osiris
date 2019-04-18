@@ -1,6 +1,6 @@
 class CustomerController < ApplicationController
   def index
-    @customers = Customer.all.sort_by(&:order_count).reverse
+    @customers = Customer.all.sort_by(&:active_orders_count).reverse
   end
 
   def show
@@ -10,7 +10,7 @@ class CustomerController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
     if @customer.save
-      flash[:success] = "Customer Saved"
+      flash[:success] = 'Customer Saved'
       redirect_to @customer
     end
   end
