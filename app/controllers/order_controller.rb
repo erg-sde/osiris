@@ -5,7 +5,7 @@ class OrderController < ApplicationController
     op[:billing_customer] = Customer.find(order_params[:billing_customer])
     @order = Order.new(op)
     if @order.save
-      flash[:success] = "Order Saved"
+      flash[:success] = 'Order Saved'
       redirect_to @order
     end
   end
@@ -15,7 +15,8 @@ class OrderController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.where(nil)
+    @orders = @orders.reject(&:shipped?)
   end
 
   def new

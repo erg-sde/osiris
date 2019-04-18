@@ -1,6 +1,6 @@
 class CustomerController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = Customer.all.sort_by(&:order_count).reverse
   end
 
   def show

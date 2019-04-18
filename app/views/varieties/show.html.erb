@@ -1,4 +1,4 @@
-<h1><%= @variety.name %></h1>
+<h4><%= @variety.name %></h4>
 <div class="row">
   <div >
     <ul class="list-group list-group-horizontal-md">
@@ -66,24 +66,24 @@
   </tbody>
 </table>
 
-<h2 class="mt-5"> Order Line Items </h2>
+<h2 class="mt-5"> Pending Line Items </h2>
 
 <table class="table table-striped">
   <thead class="table-success">
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Value</th>
-      <th scope="col">Quantity</th>
+      <th scope="col">Qty Needed</th>
       <th scope="col">Customer</th>
       <th scope="col">Region</th>
     </tr>
   </thead>
   <tbody>
-    <% @variety.line_items.each do |line| %>
+    <% @variety.line_items.reject(&:shipped?).each do |line| %>
         <tr>
         <td><%= link_to(line.order.po_number, order_url) %></td>
         <td><%= number_to_currency(line.value / 100)%></td>
-        <td><%= line.quantity %></td>
+        <td><%= line.to_ship %></td>
         <td><%= link_to(line.order.customer.name, line.order.customer) %></td>
         <td><%= line.order.customer.region %></td>
         </tr>

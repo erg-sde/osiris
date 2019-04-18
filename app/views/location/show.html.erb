@@ -1,4 +1,4 @@
-<h1>Location <%= @location.name %></h1>
+<h4>Location <%= @location.name %></h4>
 <div class="row">
   <ul class="list-group list-group-horizontal-md">
     <li class="list-group-item list-group-item-success">
@@ -33,7 +33,7 @@
         <td><%= number_to_currency(batch.value)%></td>
         <td><%= batch.variety.container.name %></td>
         <td><%= batch.quantity %></td>
-        <td><%= batch.user.email %></td>
+        <td><%= batch.user.name %></td>
         <td><%= link_to(batch.location.name, batch.location) %></td>
         <td><%= batch.soil %></td>
         <td><%= batch.treatment %></td>
