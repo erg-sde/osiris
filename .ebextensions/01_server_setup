@@ -15,3 +15,9 @@ commands:
       command: 'sudo yum -y install yarn' 
     command4:
       command: 'bundle install'
+    command6:
+      command: echo "$RDS_PASSWORD"
+    command7:
+      command: echo "$RDS_HOSTNAME"
+    command8:
+      command: psql --version
