@@ -16,7 +16,7 @@ class OrderController < ApplicationController
 
   def index
     @orders = Order.where(nil)
-    @orders = @orders.reject(&:shipped?)
+    @orders = @orders.reject(&:shipped?).sort_by(&:total_line_items).reverse
   end
 
   def new

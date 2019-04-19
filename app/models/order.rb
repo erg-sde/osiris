@@ -13,4 +13,7 @@ class Order < ApplicationRecord
     line_items.collect(&:shipped?).all?
   end
 
+  def total_line_items
+    line_items.length
+  end
 end
