@@ -16,8 +16,8 @@ commands:
     command4:
       command: 'bundle install'
     command6:
-      command: echo "$RDS_PASSWORD"
+      test: '[ ! -p /home/webapp ] && echo "webapp not exited"'
+      command: 'sudo mkdir -p /home/webapp'
     command7:
-      command: echo "$RDS_HOSTNAME"
-    command8:
-      command: psql --version
+      test: '[ ! -p /home/webapp ] && echo "webapp not exited"'
+      command: 'sudo chmod 777 /home/webapp'
