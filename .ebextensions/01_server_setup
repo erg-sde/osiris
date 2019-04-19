@@ -1,15 +1,15 @@
 commands:
-    commannd0:
+    command0:
       cwd: /tmp
       command: 'curl --silent --location https://rpm.nodesource.com/setup_11.x | sudo bash -'
-    commannd1:
+    command1:
       cwd: /tmp
       command: 'sudo yum -y install nodejs'
-    commannd2:
+    command2:
       cwd: /tmp
       test: '[ ! -f /usr/bin/yarn ] && echo "yarn not installed"'
       command: 'sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo'
-    commannd3:
+    command3:
       cwd: /tmp
       test: '[ ! -f /usr/bin/yarn ] && echo "yarn not installed"'
       command: 'sudo yum -y install yarn' 
