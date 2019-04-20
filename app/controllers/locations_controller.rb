@@ -5,7 +5,7 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.create(location_params)
-    redirect_to @location if @location.save?
+    redirect_to @location if @location.save!
   end
   
   def new
