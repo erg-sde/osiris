@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_170130) do
+ActiveRecord::Schema.define(version: 2019_04_20_182924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_170130) do
     t.datetime "updated_at", null: false
     t.integer "root_time"
     t.integer "reorder_amount"
+    t.string "plant_id"
     t.index ["container_id"], name: "index_varieties_on_container_id"
   end
 

@@ -7,6 +7,7 @@
 <table class="table table-striped border">
   <thead class="table-primary">
     <tr>
+    <th scope="col">Plant Id</th>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
       <th scope="col">Container Type</th>
@@ -18,7 +19,8 @@
   <tbody>
     <% @varieties.each do |variety| %>
         <tr>
-        <td><%= link_to(variety.name, variety) %></td>
+        <td><%= link_to(variety.plant_id, variety) %></td>
+        <td><%= variety.name %></td>
         <td><%= number_to_currency(variety.price / 100)%></td>
         <td><%= variety.container.name %></td>
         <td><%= variety.total_containers %></td>

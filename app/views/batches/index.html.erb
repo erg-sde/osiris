@@ -4,7 +4,7 @@
   <% end %>
 </h4>
 
-<div >
+<div class='mb-2'>
   <%= form_tag batches_path, method: 'get', class: 'form-inline' do %>
     Stage  
     <%= select_tag :stage, options_for_select(@stages, params[:stage]), class: 'form-control col-md-2 mr-2'  %>
