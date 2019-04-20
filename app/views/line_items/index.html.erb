@@ -1,7 +1,7 @@
 <h3 class="mt-5">Line Items</h3>
 <div class= 'mb-2'>
   <%= form_tag line_items_path, method: 'get', class: 'form-inline' do %>
-    <%= select_tag :variety_id, content_tag(:option,'All Varieties')+options_from_collection_for_select(@varieties, :id, :name), class: 'form-control col-md-2 mr-2'  %>
+    <%= select_tag :variety_id, content_tag(:option,'All Varieties')+options_from_collection_for_select(@varieties, :id, :name, params[:variety_id]), class: 'form-control col-md-2 mr-2'  %>
     Show Open?
     <%= check_box_tag :open, 'true', !params[:commit].present? || params[:open].present?, class: 'form-control col-md-1' %>
     Show Shipped?

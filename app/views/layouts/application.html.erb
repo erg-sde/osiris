@@ -32,7 +32,7 @@
             <%= link_to("Locations", locations_path, class:"nav-link")%>
           </li> 
           <li class="<%= params[:controller] == 'order' ? 'nav-item, active' : 'nav-item' %>" >
-            <%= link_to("Orders", order_index_url, class:"nav-link")%>
+            <%= link_to("Orders", orders_path, class:"nav-link")%>
           </li> 
           <li class="<%= params[:controller] == 'customer' ? 'nav-item, active' : 'nav-item' %>" >
             <%= link_to("Customers", customer_index_url, class:"nav-link")%>
