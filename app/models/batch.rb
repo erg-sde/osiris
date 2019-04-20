@@ -9,6 +9,7 @@ class Batch < ApplicationRecord
 
   scope :primary, -> { where.not(stage: '0') }
   scope :stage, ->(stage) { where stage: stage }
+  
   def week_planted
     created_at.strftime('%W').to_i
   end

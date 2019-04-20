@@ -1,0 +1,30 @@
+<h4>
+  Locations   
+  <%= link_to new_location_path do %>
+    <%= fa_icon 'plus-square', class: 'btn btn-success' %>
+  <% end %>
+</h4>
+
+<h5> Total Availability: <%= Location.total_available_capacity %> </h5>
+<table class="table table-striped border">
+  <thead class="table-primary">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Available</th>
+      <th scope="col">Capacity</th>
+      <th scope="col">Allocated</th>
+      <th scope="col">Batch Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @locations.each do |location| %>
+        <tr>
+        <td><%= link_to(location.name, location) %></td>
+        <td><%= location.remaining_capacity%></td>
+        <td><%=location.capacity%></td>
+        <td><%= location.allocated_capacity%></td>
+        <td><%= location.batch_count %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
