@@ -13,6 +13,8 @@
       <th scope="col">Container Type</th>
       <th scope="col">Containers</th>
       <th scope="col">Plants</th>
+      <th scope="col">Weeks To Root</th>
+      <th scope="col">Difficulty</th>
       <th scope="col">Batch Count</th>
     </tr>
   </thead>
@@ -25,6 +27,8 @@
         <td><%= variety.container.name %></td>
         <td><%= variety.total_containers %></td>
         <td><%= variety.total_plants %></td>
+        <td><%= variety.root_time %></td>
+        <td><%= variety.difficulty %></td>
         <td><%= variety.batch_count %></td>
         </tr>
     <% end %>
