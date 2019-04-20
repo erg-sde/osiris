@@ -1,0 +1,23 @@
+commands:
+    command0:
+      cwd: /tmp
+      command: 'curl --silent --location https://rpm.nodesource.com/setup_11.x | sudo bash -'
+    command1:
+      cwd: /tmp
+      command: 'sudo yum -y install nodejs'
+    command2:
+      cwd: /tmp
+      test: '[ ! -f /usr/bin/yarn ] && echo "yarn not installed"'
+      command: 'sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo'
+    command3:
+      cwd: /tmp
+      test: '[ ! -f /usr/bin/yarn ] && echo "yarn not installed"'
+      command: 'sudo yum -y install yarn' 
+    command4:
+      command: 'bundle install'
+    command6:
+      test: '[ ! -p /home/webapp ] && echo "webapp not exited"'
+      command: 'sudo mkdir -p /home/webapp'
+    command7:
+      test: '[ ! -p /home/webapp ] && echo "webapp not exited"'
+      command: 'sudo chmod 777 /home/webapp'

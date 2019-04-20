@@ -25,7 +25,10 @@ class LineItemsController < ApplicationController
 
   def index
     @line_items = LineItem.where(nil)
-    @line_items = @line_items.select{ |batch| !batch.shipped? }
+    @line_items = @line_items.where(variety: params[:variety_id]) unless params[:variety_id].to_i.zero?
+    @line_items = @line_items.reject{|li| !li.shipped?} if params[:commit] == 'Filter' && !params[:open].present? 
+    @line_items = @line_items.reject(&:shipped?) unless params[:history].present?
+    @varieties = Variety.all
   end
 
   def edit

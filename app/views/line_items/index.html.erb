@@ -1,8 +1,19 @@
-<h3 class="mt-5">Pending Line Items</h3>
+<h3 class="mt-5">Line Items</h3>
+<div class= 'mb-2'>
+  <%= form_tag line_items_path, method: 'get', class: 'form-inline' do %>
+    <%= select_tag :variety_id, content_tag(:option,'All Varieties')+options_from_collection_for_select(@varieties, :id, :name), class: 'form-control col-md-2 mr-2'  %>
+    Show Open?
+    <%= check_box_tag :open, 'true', !params[:commit].present? || params[:open].present?, class: 'form-control col-md-1' %>
+    Show Shipped?
+    <%= check_box_tag :history, 'true', params[:history].present?,  class: 'form-control col-md-1 text-center'%>
+    <%= submit_tag "Filter", class: 'form-control col-md-1 btn btn-primary ml-5' %>
+  <% end %>
+</div>
 <table class="table table-striped border">
   <thead class="table-success">
     <tr>
       <th scope="col">ID</th>
+      <th scope="col">PO#</th>
       <th scope="col">Variety</th>
       <th scope="col">Ordered</th>
       <th scope="col">Ship Week</th>
@@ -16,6 +27,7 @@
     <% @line_items.each do |line| %>
         <tr>
           <td><%= link_to(line.id, line) %></td>
+          <td><%= link_to(line.order.po_number, line.order) %></td>
           <td><%= link_to(line.variety.name, line.variety) %></td>
           <td><%= line.quantity%></td>
           <td><%= line.ship_week%></td>
