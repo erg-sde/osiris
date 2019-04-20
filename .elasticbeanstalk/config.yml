@@ -1,2 +1,20 @@
+branch-defaults:
+  master:
+    environment: Osiris-Prod
+environment-defaults:
+  Osiris-Prod:
+    branch: null
+    repository: null
 global:
-  profile: eb-cli
+  application_name: Maak-Propagation
+  default_ec2_keyname: maak-prod
+  default_platform: arn:aws:elasticbeanstalk:us-east-1::platform/Puma with Ruby 2.6
+    running on 64bit Amazon Linux/2.9.1
+  default_region: us-east-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  sc: git
+  workspace_type: Application
