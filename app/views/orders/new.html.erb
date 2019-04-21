@@ -3,7 +3,7 @@
     <div class="card col-md-4">
     <div class="card-header" >Create a New Order</div>
         <div class="row mx-auto m-3">
-            <%= form_for @order, url: order_index_path do |f| %>
+            <%= form_for @order, url: orders_path do |f| %>
                 <div class="form-group">
                     <label>PO Number</label></br> 
                     <%= f.text_field :po_number,  class: "form-control" %>
