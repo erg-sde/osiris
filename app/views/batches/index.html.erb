@@ -6,7 +6,7 @@
 
 <div class='mb-2'>
   <%= form_tag batches_path, method: 'get', class: 'form-inline' do %>
-    Stage  
+    <div class="mr-2"> Stage </div>   
     <%= select_tag :stage, options_for_select(@stages, params[:stage]), class: 'form-control col-md-2 mr-2'  %>
     <%= submit_tag "Filter", class: 'form-control col-md-1 btn btn-primary' %>
   <% end %>

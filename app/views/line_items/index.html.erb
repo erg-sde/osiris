@@ -41,8 +41,14 @@
             <% end %>
           </td>
           <td>
-            <%= link_to edit_line_item_path(line.id) do %>
-              <%= fa_icon 'truck', class: 'btn btn-primary' %>
+            <% if line.shipped? %>
+              <%= link_to edit_line_item_path(line.id) do %>
+                <%= fa_icon 'truck', class: 'btn btn-primary disabled' %>
+              <% end %>
+            <% else %>
+              <%= link_to edit_line_item_path(line.id) do %>
+                <%= fa_icon 'truck', class: 'btn btn-primary' %>
+              <% end %>
             <% end %>
           </td>
         </tr>

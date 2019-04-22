@@ -20,4 +20,8 @@ class LineItem < ApplicationRecord
   def to_ship
     quantity - allocated
   end
+
+  def last_ship_date
+    line_item_batches.maximum('created_at')
+  end
 end
