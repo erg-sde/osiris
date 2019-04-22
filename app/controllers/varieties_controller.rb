@@ -22,6 +22,6 @@ class VarietiesController < ApplicationController
   end
   private
   def variety_params
-    params.require(:variety).permit(:name, :container, :price, :root_time, :reorder_amount)
+    params.require(:variety).permit(:plant_id, :name, :container, :price, :root_time, :ppp, :difficulty, :source, :reorder_amount)
   end
 end

@@ -17,12 +17,24 @@
                     <%= f.select 'container',  options_from_collection_for_select(@containers, 'id', 'name'),{}, class: "form-control" %>
                 </div>
                 <div class="form-group">
+                    <label>PPP</label></br>
+                    <%= f.text_field :ppp, class: "form-control" %>
+                </div>
+                <div class="form-group">
                     <label>Price in Cents</label></br>
                     <%= f.text_field :price, class: "form-control" %>
                 </div>
                 <div class="form-group">
-                    <label>Root Time</label></br>
+                    <label>Weeks to Root</label></br>
                     <%= f.text_field :root_time, class: "form-control" %>
+                </div>
+                 <div class="form-group">
+                    <label>Difficulty</label></br>
+                    <%= f.text_field :difficulty, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <label>Source</label></br>
+                    <%= f.text_field :source, class: "form-control" %>
                 </div>
                 <div class="form-group">
                     <label>Reorder Amount</label></br>
