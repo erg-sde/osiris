@@ -25,7 +25,7 @@
         <tr>
         <td><%= link_to(variety.plant_id, variety) %></td>
         <td><%= variety.name %></td>
-        <td><%= number_to_currency(variety.price / 100)%></td>
+        <td><%= number_to_currency(variety.price.to_f / 100) %></td>
         <td><%= variety.container.name %></td>
         <td><%= variety.total_containers %></td>
         <td><%= variety.total_plants %></td>
