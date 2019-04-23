@@ -4,24 +4,24 @@ class LineItem < ApplicationRecord
   has_many :line_item_batches
   has_many :batches, through: :line_item_batches
 
-
-  def value
+   def value
     quantity * variety.price
   end
 
-  def allocated
+  def shipped
     line_item_batches.sum('quantity')
   end
 
   def shipped?
-    allocated >= quantity
+    shipped >= quantity
   end
 
   def to_ship
-    quantity - allocated
+    quantity - shipped
   end
 
   def last_ship_date
-    line_item_batches.maximum('created_at')
+    max = line_item_batches.maximum('created_at')
+    return max.present? ? max.strftime('%F') : nil
   end
 end

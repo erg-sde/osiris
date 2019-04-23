@@ -14,7 +14,7 @@
       <th scope="col">Container Type</th>
       <th scope="col">Containers</th>
       <th scope="col">Plants</th>
-      <th scope="col">Weeks To Root</th>
+      <th scope="col">Root Time</th>
       <th scope="col">PPP</th>
       <th scope="col">Difficulty</th>
       <th scope="col">Source</th>
@@ -26,7 +26,7 @@
         <tr>
         <td><%= link_to(variety.plant_id, variety) %></td>
         <td><%= variety.name %></td>
-        <td><%= number_to_currency(variety.price / 100)%></td>
+        <td><%= number_to_currency(variety.price.to_f / 100)%></td>
         <td><%= variety.container.name %></td>
         <td><%= variety.total_containers %></td>
         <td><%= variety.total_plants %></td>
