@@ -20,7 +20,7 @@
     </ul>
     <ul class="list-group list-group-horizontal-md">
         <li class="list-group-item">
-            Price: <%= number_to_currency(@variety.price / 100) %>
+            Price: <%= number_to_currency(@variety.price.to_f / 100) %>
         </li>
         <li class="list-group-item">
             Container: <%= @variety.container.name %>
