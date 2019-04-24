@@ -7,7 +7,11 @@
 <div class='mb-2'>
   <%= form_tag batches_path, method: 'get', class: 'form-inline' do %>
     <div class="mr-2"> Stage </div>   
-    <%= select_tag :stage, options_for_select(@stages, params[:stage]), class: 'form-control col-md-2 mr-2'  %>
+    <%= select_tag :stage, content_tag(:option,'All Stages')+options_for_select(@stages, params[:stage]), class: 'form-control col-md-2 mr-2'  %>
+    Show Open?
+    <%= check_box_tag :open, 'true', !params[:commit].present? || params[:open].present?, class: 'form-control col-md-1' %>
+    Show Shipped?
+    <%= check_box_tag :history, 'true', params[:history].present?,  class: 'form-control col-md-1 text-center'%>
     <%= submit_tag "Filter", class: 'form-control col-md-1 btn btn-primary' %>
   <% end %>
 </div>
@@ -18,7 +22,7 @@
       <th scope="col">Name</th>
       <th scope="col">Variety</th>
       <th scope="col">Type</th>
-      <th scope="col">Week </th>
+      <th scope="col">Planted Week </th>
       <th scope="col">Stage</th>
       <th scope="col">Count</th>
       <th scope="col">Planter</th>

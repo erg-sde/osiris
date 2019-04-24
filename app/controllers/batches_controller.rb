@@ -1,8 +1,9 @@
 class BatchesController < ApplicationController
   def index
     @batches = Batch.where(nil).primary
-    @batches = @batches.stage(params[:stage]) if params[:stage].present?
-    @batches = @batches.select { |batch| batch.plants_available.positive? }
+    @batches = @batches.reject { |batch| batch.plants_available.positive? } if  params[:commit] == 'Filter' && !params[:open].present? 
+    @batches = @batches.reject{ |batch| batch.plants_available <= 0} unless params[:history].present?
+    @batches = @batches.stage(params[:stage]) if params[:stage].to_i.positive?
     @stages = %w[1 3 5 6 7]
   end
 

@@ -11,7 +11,7 @@ class Batch < ApplicationRecord
   scope :stage, ->(stage) { where stage: stage }
   
   def week_planted
-    created_at.strftime('%W').to_i
+    planted_week.strftime('%W').to_i
   end
 
   def dumped_plants
