@@ -1,6 +1,10 @@
 class BatchesController < ApplicationController
   def index
+    
     @batches = Batch.where(nil).primary
+    start_date = Date.commercial(2019, params[:start_week].to_i, 1) if (params[:start_week].present? && params[:start_week] != '--')
+    end_date = Date.commercial(2019, params[:end_week].to_i, 7) if (params[:end_week].present? && params[:start_week] != '--')
+    @batches = @batches.where(planted_week: (start_date || Date.today - 90)..(end_date || Time.now)) if params[:start_week].present? || params[:end_week].present?
     @batches = @batches.reject { |batch| batch.plants_available.positive? } if  params[:commit] == 'Filter' && !params[:open].present? 
     @batches = @batches.reject { |batch| batch.plants_available <= 0 } unless params[:history].present?
     @batches = @batches.select { |batch| batch.stage = params[:stage] } if params[:stage].to_i.positive?

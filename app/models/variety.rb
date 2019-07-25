@@ -2,6 +2,7 @@ class Variety < ApplicationRecord
   belongs_to :container
   has_many :batches
   has_many :line_items
+
   def total_containers
     batches.sum('quantity')
   end

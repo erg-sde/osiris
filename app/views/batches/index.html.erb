@@ -12,6 +12,10 @@
     <%= check_box_tag :open, 'true', !params[:commit].present? || params[:open].present?, class: 'form-control col-md-1' %>
     Show Shipped?
     <%= check_box_tag :history, 'true', params[:history].present?,  class: 'form-control col-md-1 text-center'%>
+    <div class="mr-2"> Start Week </div>
+    <%= select_tag :start_week, content_tag(:option,'--') + options_for_select([*(1..52)],params[:start_date]), class: 'form-control col-md-1 mr-2'  %>
+    <div class="mr-2"> End Week </div>
+    <%= select_tag :end_week, content_tag(:option,'--') + options_for_select([*(1..52)], params[:end_date]), class: 'form-control col-md-1 mr-2'  %>
     <%= submit_tag "Filter", class: 'form-control col-md-1 btn btn-primary' %>
   <% end %>
 </div>

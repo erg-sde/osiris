@@ -5,7 +5,7 @@
         PO Number: <%= @order.po_number%>
       </li>
       <li class="list-group-item">
-         <%= @order.created_at.strftime("%F")%>
+         <%= @order.created_at %>
       </li>
       <li class="list-group-item">
       <% if @order.shipped? %>
@@ -18,7 +18,7 @@
         BIll To: <%= link_to(@order.billing_customer.name, @order.billing_customer)%>
       </li>
       <li class="list-group-item">
-        Ship To: <%= link_to(@order.customer.name, @order.customer)%>
+        Ship To: <%= link_to(@order.customer_name, @order.customer)%>
       </li>
       <li class="list-group-item">
         Ship Via: <%= @order.customer.region%>
